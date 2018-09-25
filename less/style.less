@@ -1,0 +1,321 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+
+@cinzel:'Cinzel Decorative', cursive;
+
+/* colors */
+@card: black;
+@redsuit: red;
+@blacksuit: white;
+
+/* General styles */
+body{
+    padding: 50px;
+}
+
+.red{
+    color: @redsuit;
+}
+
+/* Main styles */
+.table{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.card{
+    position: relative;
+    height: 250px;
+    width: 165px;
+    perspective: 800px;
+    margin-bottom: 20px;
+    &--red{
+        color: @redsuit;
+    }
+    &--white{
+        color: @blacksuit;
+    }
+    &__front, &__back{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        transition: transform .2s ease-in;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+    &__front{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: @card;
+        transform: rotateY(-180deg) translateZ(0);
+    }
+    &__back{
+        background-image: url(../img/test.jpg);
+        background-size: 200px;
+    }
+    &:hover .card__front{
+        transform: rotateY(0deg);
+    }
+    &:hover .card__back{
+        transform: rotateY(-180deg);
+    }
+
+    &__value{
+        align-self: flex-start;
+        &--reversed{
+            transform: rotate(180deg);
+            transform-origin: 240%;
+        }
+    }
+
+    &__name{
+        font: 400 30px  @cinzel;
+    }
+
+    &__text{
+        font: 400 14px  @cinzel;
+        &--small{
+            font: 400 12px  @cinzel;
+        }
+    }
+}
+
+/* SUIT signs */
+
+.card__suit{
+    position: relative;
+    width: 30px;
+    height: 30px;
+
+    &--heart{
+        &::before,
+        &::after{
+            position: absolute;
+            content: "";
+            left: 15px;
+            top: 0;
+            width: 15px;
+            height: 25px;
+            background: @redsuit;
+            border-radius: 15px 15px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        &::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin :100% 100%;
+        }
+    }
+    &--diamond{
+        width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-bottom-color: @redsuit;
+	position: relative;
+	top: -15px;
+
+        &::after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 15px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: @redsuit;
+        }
+    }
+}
+
+.spade{
+    &__circle {
+        width: 15px;
+        height: 15px;
+        background: @blacksuit;
+        border-radius: 50px;
+        position:absolute;
+        left: 9px;
+        top:7px;
+        z-index: 100;
+
+        &:before {
+            width: 15px;
+            height: 15px;
+            background: @blacksuit;
+            border-radius: 50px;
+            position:absolute;
+            left:-9px;
+            top:5px;
+            z-index: 100;
+            content: "";
+        } 
+        &:after {
+            width: 15px;
+            height: 15px;
+            background: @blacksuit;
+            border-radius: 50px;
+            position:absolute;
+            left: 9px;
+            top: 5px;
+            z-index: 100;
+            content: "";
+        }
+    }    
+        
+    &__triangle {
+    width: 1px;
+    height: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 16px solid @blacksuit;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+    z-index: 100;
+    }
+
+    &__base {
+    background: none repeat scroll 0 0 @blacksuit;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 27px;
+    z-index: 0;
+
+    &:before {
+        width:0px;
+        height:1px;
+        position:absolute;
+        border-left: 8px solid @card;
+        border-right: 8px solid @card;
+        border-top: 1px solid @card;
+        border-bottom: 8px solid @card;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 9px;
+        left: 0px;
+        content: "";
+        }
+        
+    &:after {
+        width:0px;
+        height:1px;
+        position:absolute;
+        border-left: 8px solid @card;
+        border-right: 8px solid @card;
+        border-top: 1px solid @card;
+        border-bottom: 8px solid @card;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 0px;
+        left: 18px;
+        content: "";
+        }
+    }
+}
+
+.club{
+    &__circle {
+        width: 15px;
+        height: 15px;
+        background: @blacksuit;
+        border-radius: 50px;
+        position:absolute;
+        left: 9px;
+        z-index: 100;
+
+        &:before {
+            width: 15px;
+            height: 15px;
+            background: @blacksuit;
+            border-radius: 50px;
+            position:absolute;
+            left:-9px;
+            top: 11px;
+            z-index: 100;
+            content: "";
+        }
+        &:after {
+            width: 15px;
+            height: 15px;
+            background: @blacksuit;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            position:absolute;
+            left: 9px;
+            top:11px;
+            z-index: 100;
+            content: "";
+            }
+    }
+
+    &__triangle {
+        width: 0;
+        height: 0;
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        border-bottom: 15px solid @blacksuit;
+        position:absolute;
+        top: 6px;
+        left: 5px;
+        z-index: 100;
+    }
+    &__base {
+        background: none repeat scroll 0 0 @blacksuit;
+        height: 10px;
+        left: 0;
+        position: absolute;
+        top: 20px;
+        width: 29px;
+        z-index: 0;
+
+        &:before {
+            width:0px;
+            height:1px;
+            position:absolute;
+            border-left: 8px solid @card;
+            border-right: 8px solid @card;
+            border-top: 1px solid @card;
+            border-bottom: 8px solid @card;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 60px;
+            left: 0px;
+            content: "";
+        }
+    
+        &:after {
+            width:0px;
+            height:1px;
+            position:absolute;
+            border-left: 8px solid @card;
+            border-right: 8px solid @card;
+            border-top: 1px solid @card;
+            border-bottom: 8px solid @card;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 0px;
+            left: 18px;
+            content: "";
+        }
+    }
+}
+
+
+
+/* https://10for2.com/2012/07/31/css-card-suit-shapes-the-club/ */

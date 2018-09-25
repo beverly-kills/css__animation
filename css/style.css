@@ -1,0 +1,330 @@
+/* Font */
+@font-face {
+  font-family: 'Cinzel Decorative';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cinzel Decorative Regular'), local('CinzelDecorative-Regular'), url(https://fonts.gstatic.com/s/cinzeldecorative/v6/daaCSScvJGqLYhG8nNt8KPPswUAPni7TTMk.ttf) format('truetype');
+}
+/* colors */
+/* General styles */
+body {
+  padding: 50px;
+}
+.red {
+  color: red;
+}
+/* Main styles */
+.table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.card {
+  position: relative;
+  height: 250px;
+  width: 165px;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  margin-bottom: 20px;
+}
+.card--red {
+  color: red;
+}
+.card--white {
+  color: white;
+}
+.card__front,
+.card__back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: -webkit-transform 0.2s ease-in;
+  -o-transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.card__front {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: black;
+  -webkit-transform: rotateY(-180deg) translateZ(0);
+  transform: rotateY(-180deg) translateZ(0);
+}
+.card__back {
+  background-image: url(../img/test.jpg);
+  background-size: 200px;
+}
+.card:hover .card__front {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.card:hover .card__back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.card__value {
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+.card__value--reversed {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transform-origin: 240%;
+  -ms-transform-origin: 240%;
+  transform-origin: 240%;
+}
+.card__name {
+  font: 400 30px 'Cinzel Decorative', cursive;
+}
+.card__text {
+  font: 400 14px 'Cinzel Decorative', cursive;
+}
+.card__text--small {
+  font: 400 12px 'Cinzel Decorative', cursive;
+}
+/* SUIT signs */
+.card__suit {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.card__suit--heart::before,
+.card__suit--heart::after {
+  position: absolute;
+  content: "";
+  left: 15px;
+  top: 0;
+  width: 15px;
+  height: 25px;
+  background: red;
+  border-radius: 15px 15px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+.card__suit--heart::after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+.card__suit--diamond {
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-bottom-color: red;
+  position: relative;
+  top: -15px;
+}
+.card__suit--diamond::after {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-top-color: red;
+}
+.spade__circle {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50px;
+  position: absolute;
+  left: 9px;
+  top: 7px;
+  z-index: 100;
+}
+.spade__circle:before {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50px;
+  position: absolute;
+  left: -9px;
+  top: 5px;
+  z-index: 100;
+  content: "";
+}
+.spade__circle:after {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50px;
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  z-index: 100;
+  content: "";
+}
+.spade__triangle {
+  width: 1px;
+  height: 0px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 16px solid white;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  z-index: 100;
+}
+.spade__base {
+  background: none repeat scroll 0 0 white;
+  height: 10px;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  width: 27px;
+  z-index: 0;
+}
+.spade__base:before {
+  width: 0px;
+  height: 1px;
+  position: absolute;
+  border-left: 8px solid black;
+  border-right: 8px solid black;
+  border-top: 1px solid black;
+  border-bottom: 8px solid black;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 9px;
+  left: 0px;
+  content: "";
+}
+.spade__base:after {
+  width: 0px;
+  height: 1px;
+  position: absolute;
+  border-left: 8px solid black;
+  border-right: 8px solid black;
+  border-top: 1px solid black;
+  border-bottom: 8px solid black;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 0px;
+  left: 18px;
+  content: "";
+}
+.club__circle {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50px;
+  position: absolute;
+  left: 9px;
+  z-index: 100;
+}
+.club__circle:before {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50px;
+  position: absolute;
+  left: -9px;
+  top: 11px;
+  z-index: 100;
+  content: "";
+}
+.club__circle:after {
+  width: 15px;
+  height: 15px;
+  background: white;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  position: absolute;
+  left: 9px;
+  top: 11px;
+  z-index: 100;
+  content: "";
+}
+.club__triangle {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 15px solid white;
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  z-index: 100;
+}
+.club__base {
+  background: none repeat scroll 0 0 white;
+  height: 10px;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  width: 29px;
+  z-index: 0;
+}
+.club__base:before {
+  width: 0px;
+  height: 1px;
+  position: absolute;
+  border-left: 8px solid black;
+  border-right: 8px solid black;
+  border-top: 1px solid black;
+  border-bottom: 8px solid black;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 60px;
+  left: 0px;
+  content: "";
+}
+.club__base:after {
+  width: 0px;
+  height: 1px;
+  position: absolute;
+  border-left: 8px solid black;
+  border-right: 8px solid black;
+  border-top: 1px solid black;
+  border-bottom: 8px solid black;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 0px;
+  left: 18px;
+  content: "";
+}
+/* https://10for2.com/2012/07/31/css-card-suit-shapes-the-club/ */
